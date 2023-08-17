@@ -32,7 +32,12 @@ class TipRoute extends StatelessWidget {
             children: <Widget>[
               Text(text),
               ElevatedButton(
-                onPressed: () => Navigator.pop(context, '我是返回值'),
+                onPressed: () => {
+                  if (Navigator.canPop(context))
+                    {
+                      Navigator.pop(context, '我是返回值'),
+                    }
+                },
                 child: const Text('返回'),
               )
             ],
