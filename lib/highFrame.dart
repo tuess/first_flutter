@@ -7,7 +7,7 @@ class HighFrame extends StatefulWidget {
   const HighFrame({super.key});
 
   @override
-  _HighFrameState createState() => _HighFrameState();
+  State<HighFrame> createState() => _HighFrameState();
 }
 
 class _HighFrameState extends State<HighFrame> {

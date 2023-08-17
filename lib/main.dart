@@ -70,7 +70,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  int _currentPage = 0;
   String words = '';
 
   void _setWords() {
@@ -92,13 +91,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void _subCounter() {
     setState(() {
       _counter--;
-    });
-  }
-
-  void _onPageChanged(int index) {
-    setState(() {
-      //通过setState切换页面
-      _currentPage = index;
     });
   }
 
