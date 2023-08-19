@@ -138,7 +138,14 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            Padding(padding: const EdgeInsets.all(18), child: Text(words)),
+            Foo(
+              onPressed: () {
+                setState(() {
+                  _counter += 2;
+                });
+              },
+            ),
+            Padding(padding: const EdgeInsets.all(10), child: Text(words)),
             TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, 'new_page');
@@ -170,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           Positioned(
               left: 40,
-              bottom: 20,
+              bottom: 5,
               child: FloatingActionButton(
                 onPressed: () {
                   _incrementCounter();
@@ -179,8 +186,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: const Icon(Icons.add),
               )),
           Positioned(
-              left: 180,
-              bottom: 20,
+              left: 170,
+              bottom: 5,
               child: FloatingActionButton(
                 onPressed: () {
                   _subCounter();
@@ -190,7 +197,7 @@ class _MyHomePageState extends State<MyHomePage> {
               )),
           Positioned(
               right: 20,
-              bottom: 20,
+              bottom: 5,
               child: FloatingActionButton(
                 onPressed: _setWords,
                 heroTag: '3',
@@ -263,6 +270,29 @@ class _RandomWordsWidget extends State<RandomWordsWidget> {
         items: bottomNavItems,
         currentIndex: _index,
         onTap: _onPageChanged,
+      ),
+    );
+  }
+}
+
+class Foo extends StatelessWidget {
+  final VoidCallback onPressed;
+
+  const Foo({super.key, required this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.blue.withOpacity(0.5),
+      margin: const EdgeInsets.all(15),
+      child: Column(
+        children: [
+          const Center(child: FlutterLogo(size: 50)),
+          ElevatedButton(
+            onPressed: onPressed,
+            child: const Text('+2'),
+          )
+        ],
       ),
     );
   }

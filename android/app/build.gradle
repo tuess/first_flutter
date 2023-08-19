@@ -56,7 +56,7 @@ android {
             keyAlias 'sign'  //别名
             keyPassword '123456'
             storePassword '123456'
-            storeFile file('E:/keytool/key.jks')  //签名文件路径
+            storeFile file('D:/keytool/key.jks')  //签名文件路径
         }
     }
 

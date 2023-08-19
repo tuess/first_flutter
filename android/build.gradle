@@ -1,7 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.7.10'
     repositories {
-        google()
+//        google()
 //        maven { url 'https://mirrors.tuna.tsinghua.edu.cn/flutter/download.flutter.io' }
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/jcenter' }
@@ -15,7 +15,7 @@ buildscript {
 }
 allprojects {
     repositories {
-        google()
+//        google()
         mavenCentral()
     }
 }
