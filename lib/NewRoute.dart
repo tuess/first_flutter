@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class NewRoute extends StatelessWidget {
-  const NewRoute({super.key});
+  final FooController fooController = FooController();
+
+  NewRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,9 +12,69 @@ class NewRoute extends StatelessWidget {
         appBar: AppBar(
           title: const Text('new route'),
         ),
-        body: const Center(
-          child: Text('this is a new rout'),
+        body: Center(
+          child: Column(
+            children: [
+              Text('this is a new rout'),
+              Foo(
+                fooController: fooController,
+              )
+            ],
+          ),
         ));
+  }
+}
+
+class Foo extends StatefulWidget {
+  final FooController fooController;
+
+  const Foo({super.key, required this.fooController});
+
+  @override
+  State<Foo> createState() => _FooState();
+}
+
+class _FooState extends State<Foo> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue.withOpacity(0.3),
+      child: Column(
+        children: [
+          ListenableBuilder(
+              listenable: widget.fooController._sliderValue,
+              builder: (BuildContext buildContext, Widget? child) {
+                return Column(
+                  children: [
+                    FlutterLogo(
+                        size: 100 * widget.fooController._sliderValue.value),
+                    Slider(
+                        value: widget.fooController._sliderValue.value,
+                        onChanged: (double value) {
+                          widget.fooController._sliderValue.value = value;
+                        }),
+                  ],
+                );
+              }),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                widget.fooController.setMax();
+              });
+            },
+            child: Text('set to max'),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class FooController {
+  final ValueNotifier<double> _sliderValue = ValueNotifier(0.0);
+
+  void setMax() {
+    _sliderValue.value = 1.0;
   }
 }
 

@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        "new_page": (context) => const NewRoute(),
+        "new_page": (context) => NewRoute(),
         "tip_page": (context) {
           return TipRoute(
               text: ModalRoute.of(context)!.settings.arguments.toString());
@@ -254,7 +254,7 @@ class _RandomWordsWidget extends State<RandomWordsWidget> {
       const MyHomePage(
         title: 'Flutter Demo Home Page',
       ),
-      const NewRoute(),
+      NewRoute(),
       const TipRoute(
         text: 'test',
       ),
