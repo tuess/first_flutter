@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
@@ -163,5 +167,43 @@ class _VideoState extends State<Video> {
         ),
       ),
     );
+  }
+}
+
+class Request extends StatefulWidget {
+  const Request({super.key});
+
+  @override
+  State<Request> createState() => _RequestState();
+}
+
+class _RequestState extends State<Request> {
+  String _result = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ElevatedButton(onPressed: request, child: const Text('请求')),
+        Text(_result),
+      ],
+    );
+  }
+
+  request() async {
+    final dio = Dio();
+    dio.httpClientAdapter = IOHttpClientAdapter(createHttpClient: () {
+      final client = HttpClient();
+      client.badCertificateCallback =
+          (X509Certificate cert, String host, int port) {
+        return true;
+      };
+      return client;
+    });
+    final response = await dio
+        .get('https://v.api.aa1.cn/api/api-girl-11-02/index.php?type=url');
+    setState(() {
+      _result = response.data;
+    });
   }
 }

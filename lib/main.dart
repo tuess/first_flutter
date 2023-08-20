@@ -255,7 +255,7 @@ class _RandomWordsWidget extends State<RandomWordsWidget> {
         title: 'Flutter Demo Home Page',
       ),
       NewRoute(),
-      const TipRoute(
+      TipRoute(
         text: 'test',
       ),
       const HighFrame()

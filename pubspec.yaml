@@ -41,6 +41,7 @@ dev_dependencies:
     sdk: flutter
   english_words: ^4.0.0
   flutter_displaymode: ^0.6.0
+  dio: ^5.3.2
   video_player: 2.1.15
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
