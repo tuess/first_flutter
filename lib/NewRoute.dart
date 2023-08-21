@@ -93,7 +93,7 @@ class TipRoute extends StatelessWidget {
         appBar: AppBar(
           title: const Text('提示'),
         ),
-        body: Video());
+        body: const Video());
   }
 }
 
@@ -112,9 +112,9 @@ class _VideoState extends State<Video> {
     super.initState();
     //设置视频参数 (..)是级联的意思
     _controller = VideoPlayerController.network(
-        'https://iwater.zze.com.cn:9000/uploads/organization/2022/05/20220524164809014.mp4')
-      ..initialize().then((_) {
-        // 确保在初始化视频后显示第一帧，直至在按下播放按钮。
+        'https://iwater.zze.com.cn:9000/uploads/organization/2022/05/20220524164809014.mp4');
+    _controller.initialize().then((_) {
+      // 确保在初始化视频后显示第一帧，直至在按下播放按钮。
         setState(() {});
       });
   }
@@ -171,7 +171,7 @@ class _VideoState extends State<Video> {
 }
 
 class Request extends StatefulWidget {
-  const Request({super.key});
+  Request({super.key});
 
   @override
   State<Request> createState() => _RequestState();
